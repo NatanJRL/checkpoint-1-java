@@ -1,11 +1,9 @@
 package br.com.fiap.checkpoint.dto;
 
-import java.util.Date;
-
 public record BookDTO(
         String title,
         String authorName,
-        Date releaseDate,
+        java.time.LocalDate releaseDate,
         String genre,
         int numberOfPages
 ) {}

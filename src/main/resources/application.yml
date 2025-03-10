@@ -1,0 +1,47 @@
+server:
+  port: ${SERVER_PORT:8080}
+
+spring:
+  application:
+    name: checkpoint
+  thymeleaf:
+    cache: false
+  http:
+    encoding:
+      charset: UTF-8
+  jpa:
+    open-in-view: true
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        format_sql: true
+  datasource:
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  messages:
+      encoding: UTF-8
+      basename: messages
+  h2:
+    console:
+      enabled: true
+      path: /h2-console  # Caminho para acessar o console H2 no navegador
+    show-sql: true  # To show SQL queries in the console (optional)
+    # open-in-view: false  # Best practice to disable Open Session in View pattern
+  devtools:
+    restart:
+      enabled: true
+logging:
+  level:
+    root: INFO
+    br: DEBUG
+    org:
+      hibernate:
+        SQL: DEBUG         # Ativa o log das SQL queries
+        type:
+          descriptor:
+            sql:
+              BasicBinder: TRACE  # Mostra parâmetros das queries

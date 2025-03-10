@@ -1,4 +1,4 @@
-package br.com.fiap.ja.ecommerce;
+package br.com.fiap.checkpoint;
 
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;

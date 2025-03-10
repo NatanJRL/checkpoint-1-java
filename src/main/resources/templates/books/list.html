@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Livros</title>
+</head>
+<body>
+<h1>Lista de Livros</h1>
+
+<!-- Verificando se a lista de livros não está vazia -->
+<div th:if="${not #lists.isEmpty(books)}">
+    <table>
+        <thead>
+        <tr>
+            <th>Título</th>
+            <th>Autor</th>
+            <th>Data de lançamento</th>
+            <th>Gênero</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Iterando sobre a lista de livros -->
+        <tr th:each="book : ${books}">
+            <td th:text="${book.title}"></td>
+            <td th:text="${book.authorName}"></td>
+            <td th:text="${book.releaseDate}"></td>
+            <td th:text="${book.genre}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Mensagem caso a lista de livros esteja vazia -->
+<div th:if="${#lists.isEmpty(books)}">
+    <p>Nenhum livro encontrado.</p>
+</div>
+</body>
+</html>

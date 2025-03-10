@@ -6,8 +6,9 @@ import br.com.fiap.checkpoint.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.UUID;
 
 @Service
 public class BookService {
@@ -26,6 +27,16 @@ public class BookService {
                             book.getGenre(),
                             book.getNumberOfPages());
                 }
-                ).collect(Collectors.toList());
+                ).toList();
+    }
+
+    public void createBook(BookDTO dto){
+        Book book = new Book();
+        book.setTitle(dto.title());
+        book.setAuthorName(dto.authorName());
+        book.setReleaseDate(LocalDate.now());
+        book.setGenre(dto.genre());
+        book.setNumberOfPages(dto.numberOfPages());
+        repository.save(book);
     }
 }
