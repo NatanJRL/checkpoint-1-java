@@ -3,6 +3,7 @@ package br.com.fiap.checkpoint.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.UUID;
@@ -31,6 +32,12 @@ public class Book {
 
     @Column
     private int numberOfPages;
+
+    @Column
+    private String publisher;
+
+    @Column
+    private BigDecimal price;
 
     public Long getId() {
         return id;
@@ -78,5 +85,21 @@ public class Book {
 
     public void setNumberOfPages(int numberOfPages) {
         this.numberOfPages = numberOfPages;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
+    public String getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
     }
 }
