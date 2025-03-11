@@ -2,47 +2,114 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Cadastro de Livro</title>
+    <title>Edição de livro</title>
     <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 900px;
+        }
+
+        .btn-save {
+            background-color: #007BFF;
+            color: white;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+
+        .btn-save:hover {
+            background-color: #0056b3;
+        }
+
+        .form-title {
+            color: #007BFF;
+        }
+
+        .form-group label {
+            font-weight: bold;
+        }
+
+        .text-danger {
+            font-size: 0.875rem;
+            margin-top: 5px;
+        }
+
+        .form-control {
+            max-width: 500px;
+            margin-bottom: 15px;
+        }
+
+
+        .form-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .form-container .form-group {
+            width: 48%;
+            margin-bottom: 20px;
+        }
+       }
+    </style>
 </head>
 <body class="container mt-5">
 
-<h2 class="mb-4">Cadastro de Livro</h2>
+<h2 class="mb-4 form-title">
+    <i class="bi bi-pencil-square"></i> Editar livro
+</h2>
 
 <form th:action="@{/books/update/{id}(id=${id})}" th:object="${book}" method="post" class="needs-validation" novalidate>
+    <div class="form-container">
+        <div class="form-group">
+            <label for="title" class="form-label">Título:</label>
+            <input type="text" id="title" th:field="*{title}" class="form-control" />
+            <div class="text-danger" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></div>
+        </div>
 
-    <div class="mb-3">
-        <label for="title" class="form-label">Título:</label>
-        <input type="text" id="title" th:field="*{title}" class="form-control" />
-        <div class="text-danger" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></div>
+        <div class="form-group">
+            <label for="authorName" class="form-label">Autor:</label>
+            <input type="text" id="authorName" th:field="*{authorName}" class="form-control" />
+            <div class="text-danger" th:if="${#fields.hasErrors('authorName')}" th:errors="*{authorName}"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="releaseDate" class="form-label">Data de publicação:</label>
+            <input type="date" id="releaseDate" th:field="*{releaseDate}" class="form-control" />
+            <div class="text-danger" th:if="${#fields.hasErrors('releaseDate')}" th:errors="*{releaseDate}"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="genre" class="form-label">Gênero:</label>
+            <input type="text" id="genre" th:field="*{genre}" class="form-control" />
+            <div class="text-danger" th:if="${#fields.hasErrors('genre')}" th:errors="*{genre}"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="numberOfPages" class="form-label">Número de Páginas:</label>
+            <input type="number" id="numberOfPages" th:field="*{numberOfPages}" class="form-control" />
+            <div class="text-danger" th:if="${#fields.hasErrors('numberOfPages')}" th:errors="*{numberOfPages}"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="publisher" class="form-label">Editora:</label>
+            <input type="text" id="publisher" th:field="*{publisher}" class="form-control" />
+            <div class="text-danger" th:if="${#fields.hasErrors('publisher')}" th:errors="*{publisher}"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="price" class="form-label">Preço:</label>
+            <input type="number" id="price" th:field="*{price}" class="form-control" />
+            <div class="text-danger" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></div>
+        </div>
     </div>
 
-    <div class="mb-3">
-        <label for="authorName" class="form-label">Autor:</label>
-        <input type="text" id="authorName" th:field="*{authorName}" class="form-control" />
-        <div class="text-danger" th:if="${#fields.hasErrors('authorName')}" th:errors="*{authorName}"></div>
-    </div>
-
-    <div class="mb-3">
-        <label for="releaseDate" class="form-label">Data de Lançamento:</label>
-        <input type="date" id="releaseDate" th:field="*{releaseDate}" class="form-control" />
-        <div class="text-danger" th:if="${#fields.hasErrors('releaseDate')}" th:errors="*{releaseDate}"></div>
-    </div>
-
-    <div class="mb-3">
-        <label for="genre" class="form-label">Gênero:</label>
-        <input type="text" id="genre" th:field="*{genre}" class="form-control" />
-        <div class="text-danger" th:if="${#fields.hasErrors('genre')}" th:errors="*{genre}"></div>
-    </div>
-
-    <div class="mb-3">
-        <label for="numberOfPages" class="form-label">Número de Páginas:</label>
-        <input type="number" id="numberOfPages" th:field="*{numberOfPages}" class="form-control" />
-        <div class="text-danger" th:if="${#fields.hasErrors('numberOfPages')}" th:errors="*{numberOfPages}"></div>
-    </div>
-
-    <button type="submit" class="btn btn-primary">Atualizar</button>
+    <button type="submit" class="btn btn-save">Atualizar</button>
 </form>
 
 </body>

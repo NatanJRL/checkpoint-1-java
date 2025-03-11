@@ -5,6 +5,7 @@ import br.com.fiap.checkpoint.dto.BookResponseDTO;
 import br.com.fiap.checkpoint.model.Book;
 import br.com.fiap.checkpoint.service.BookService;
 import jakarta.validation.Valid;
+import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/books")
-public class BookController {
+public class  BookController {
 
     @Autowired
     private BookService service;
@@ -32,8 +33,10 @@ public class BookController {
     }
 
     @PostMapping("/add")
-    private String post(@ModelAttribute @Valid BookRequestDTO dto, BindingResult result, Model model){
-        if (result.hasErrors()) {
+    private String post(@ModelAttribute @Valid BookRequestDTO dto, BindingResult bindingResult, Model model){
+        if (bindingResult.hasErrors()) {
+            bindingResult.getAllErrors().forEach(objectError -> System.out.println(objectError.getDefaultMessage()));
+            model.addAttribute("book", dto);
             return "books/add";
         }
         service.createBook(dto);

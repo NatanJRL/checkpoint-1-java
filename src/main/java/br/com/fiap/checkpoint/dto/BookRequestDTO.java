@@ -1,6 +1,7 @@
 package br.com.fiap.checkpoint.dto;
 
 import jakarta.validation.constraints.*;
+import org.springframework.validation.annotation.Validated;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -14,7 +15,8 @@ public record BookRequestDTO(
         @Size(min = 2, max = 100, message = "O nome do autor deve ter entre 2 e 100 caracteres")
         String authorName,
 
-        @PastOrPresent(message = "A data de lançamento não pode ser no futuro")
+        @PastOrPresent(message = "A data de publicação não pode ser no futuro")
+        @NotBlank(message = "A data de publicação não pode estar em branco")
         LocalDate releaseDate,
 
         @NotBlank(message = "O gênero não pode estar em branco")
