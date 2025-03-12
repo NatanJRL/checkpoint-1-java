@@ -60,56 +60,74 @@
 <body class="container mt-5">
 
 <h2 class="mb-4 form-title">
-    <i class="bi bi-pencil-square"></i> Cadastro de Livro
+    <i class="bi bi-pencil-square" th:text="#{project.add}"></i>
 </h2>
 
 <form th:action="@{/books/add}" th:object="${book}" method="post" class="needs-validation">
     <div class="form-container">
         <div class="form-group">
-            <label for="title" class="form-label">Título:</label>
+            <label for="title" class="form-label" th:text="#{book.title}">Título:</label>
             <input type="text" id="title" th:field="*{title}" class="form-control" />
             <div class="text-danger" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></div>
         </div>
 
         <div class="form-group">
-            <label for="authorName" class="form-label">Autor:</label>
+            <label for="authorName" class="form-label" th:text="#{book.authorName}">Autor:</label>
             <input type="text" id="authorName" th:field="*{authorName}" class="form-control" />
             <div class="text-danger" th:if="${#fields.hasErrors('authorName')}" th:errors="*{authorName}"></div>
         </div>
 
         <div class="form-group">
-            <label for="releaseDate" class="form-label">Data de publicação:</label>
+            <label for="releaseDate" class="form-label" th:text="#{book.releaseDate}">Data de publicação:</label>
             <input type="date" id="releaseDate" th:field="*{releaseDate}" class="form-control" />
             <div class="text-danger" th:if="${#fields.hasErrors('releaseDate')}" th:errors="*{releaseDate}"></div>
         </div>
 
         <div class="form-group">
-            <label for="genre" class="form-label">Gênero:</label>
+            <label for="genre" class="form-label" th:text="#{book.genre}">Gênero:</label>
             <input type="text" id="genre" th:field="*{genre}" class="form-control" />
             <div class="text-danger" th:if="${#fields.hasErrors('genre')}" th:errors="*{genre}"></div>
         </div>
 
         <div class="form-group">
-            <label for="numberOfPages" class="form-label">Número de Páginas:</label>
+            <label for="numberOfPages" class="form-label" th:text="#{book.numberOfPages}">Número de Páginas:</label>
             <input type="number" id="numberOfPages" th:field="*{numberOfPages}" class="form-control" />
             <div class="text-danger" th:if="${#fields.hasErrors('numberOfPages')}" th:errors="*{numberOfPages}"></div>
         </div>
 
         <div class="form-group">
-            <label for="publisher" class="form-label">Editora:</label>
+            <label for="price" class="form-label" th:text="#{book.price}">Preço:</label>
+            <input type="number" id="price" th:field="*{price}" class="form-control" />
+            <div class="text-danger" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="publisher" class="form-label" th:text="#{book.publisher}">Editora:</label>
             <input type="text" id="publisher" th:field="*{publisher}" class="form-control" />
             <div class="text-danger" th:if="${#fields.hasErrors('publisher')}" th:errors="*{publisher}"></div>
         </div>
 
         <div class="form-group">
-            <label for="price" class="form-label">Preço:</label>
-            <input type="number" id="price" th:field="*{price}" class="form-control" />
-            <div class="text-danger" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></div>
+            <label for="publisherPhone" class="form-label" th:text="#{book.publisherPhone}">Telefone da editora:</label>
+            <input type="text" id="publisherPhone" th:field="*{publisherPhone}" class="form-control" />
+            <div class="text-danger" th:if="${#fields.hasErrors('publisherPhone')}" th:errors="*{publisherPhone}"></div>
         </div>
+
     </div>
 
-    <button type="submit" class="btn btn-save">Salvar</button>
+    <button type="submit" class="btn btn-save" th:text="#{book.save}">Salvar</button>
 </form>
-
+<footer style="color: #6c757d; position: fixed; bottom: 0; left: 0; width: 100%; background-color: #f8f9fa;">
+    <div class="d-flex justify-content-center mt-3 mb-3">
+        <a href="/books/new?lang=pt" class="btn btn-light btn-sm mx-2 d-flex align-items-center" style="border-radius: 20px;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Flag_of_Brazil.svg" alt="Português" class="me-2" style="width: 20px; height: 14px;">
+            Português
+        </a>
+        <a href="/books/new?lang=en" class="btn btn-light btn-sm mx-2 d-flex align-items-center" style="border-radius: 20px;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_the_United_States.svg" alt="English" class="me-2" style="width: 20px; height: 14px;">
+            English
+        </a>
+    </div>
+</footer>
 </body>
 </html>

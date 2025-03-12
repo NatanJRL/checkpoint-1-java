@@ -10,5 +10,6 @@ public record BookResponseDTO(
         String genre,
         int numberOfPages,
         String publisher,
+        String publisherPhone,
         BigDecimal price
 ) {}

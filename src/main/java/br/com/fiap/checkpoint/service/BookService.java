@@ -29,6 +29,7 @@ public class BookService {
                             book.getGenre(),
                             book.getNumberOfPages(),
                             book.getPublisher(),
+                            book.getPublisherPhone(),
                             book.getPrice());
                 }
                 ).toList();
@@ -43,6 +44,7 @@ public class BookService {
         book.setNumberOfPages(dto.numberOfPages());
         book.setPublisher(dto.publisher());
         book.setPrice(dto.price());
+        book.setPublisherPhone(dto.publisherPhone());
         repository.save(book);
     }
 
@@ -65,6 +67,7 @@ public class BookService {
                 bookById.get().getGenre(),
                 bookById.get().getNumberOfPages(),
                 bookById.get().getPublisher(),
+                bookById.get().getPublisherPhone(),
                 bookById.get().getPrice());
     }
 
@@ -78,7 +81,7 @@ public class BookService {
                 book.get().setAuthorName(dto.authorName());
             }
             if (dto.releaseDate() != null){
-                book.get().setReleaseDate(LocalDate.now());
+                book.get().setReleaseDate(dto.releaseDate());
             }
             if (dto.genre() != null){
                 book.get().setGenre(dto.genre());
@@ -91,6 +94,9 @@ public class BookService {
             }
             if (dto.price() != null){
                 book.get().setPrice(dto.price());
+            }
+            if (dto.publisherPhone() != null){
+                book.get().setPublisherPhone(dto.publisherPhone());
             }
             repository.save(book.get());
         }

@@ -33,9 +33,8 @@ public class  BookController {
     }
 
     @PostMapping("/add")
-    private String post(@ModelAttribute @Valid BookRequestDTO dto, BindingResult bindingResult, Model model){
+    private String post(@ModelAttribute("book") @Valid BookRequestDTO dto, BindingResult bindingResult, Model model){
         if (bindingResult.hasErrors()) {
-            bindingResult.getAllErrors().forEach(objectError -> System.out.println(objectError.getDefaultMessage()));
             model.addAttribute("book", dto);
             return "books/add";
         }
@@ -44,7 +43,11 @@ public class  BookController {
     }
 
     @PostMapping("/update/{id}")
-    private String put(@PathVariable Long id, @ModelAttribute @Valid BookRequestDTO dto, Model model){
+    private String put(@PathVariable Long id, @ModelAttribute("book") @Valid BookRequestDTO dto, BindingResult result, Model model){
+        if (result.hasErrors()) {
+            model.addAttribute("book", dto);
+            return "books/update";
+        }
         service.update(id, dto);
         return "redirect:/books/list";
     }

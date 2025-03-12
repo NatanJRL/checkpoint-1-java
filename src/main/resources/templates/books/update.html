@@ -97,20 +97,37 @@
         </div>
 
         <div class="form-group">
+            <label for="price" class="form-label">Preço:</label>
+            <input type="number" id="price" th:field="*{price}" class="form-control" />
+            <div class="text-danger" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></div>
+        </div>
+
+        <div class="form-group">
             <label for="publisher" class="form-label">Editora:</label>
             <input type="text" id="publisher" th:field="*{publisher}" class="form-control" />
             <div class="text-danger" th:if="${#fields.hasErrors('publisher')}" th:errors="*{publisher}"></div>
         </div>
 
         <div class="form-group">
-            <label for="price" class="form-label">Preço:</label>
-            <input type="number" id="price" th:field="*{price}" class="form-control" />
-            <div class="text-danger" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></div>
+            <label for="publisherPhone" class="form-label" th:text="#{book.publisherPhone}">Telefone da editora:</label>
+            <input type="text" id="publisherPhone" th:field="*{publisherPhone}" class="form-control" />
+            <div class="text-danger" th:if="${#fields.hasErrors('publisherPhone')}" th:errors="*{publisherPhone}"></div>
         </div>
     </div>
 
     <button type="submit" class="btn btn-save">Atualizar</button>
 </form>
-
+<footer style="color: #6c757d; position: fixed; bottom: 0; left: 0; width: 100%; background-color: #f8f9fa;">
+    <div class="d-flex justify-content-center mt-3 mb-3">
+        <a href="/books/list?lang=pt" class="btn btn-light btn-sm mx-2 d-flex align-items-center" style="border-radius: 20px;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Flag_of_Brazil.svg" alt="Português" class="me-2" style="width: 20px; height: 14px;">
+            Português
+        </a>
+        <a href="/books/list?lang=en" class="btn btn-light btn-sm mx-2 d-flex align-items-center" style="border-radius: 20px;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_the_United_States.svg" alt="English" class="me-2" style="width: 20px; height: 14px;">
+            English
+        </a>
+    </div>
+</footer>
 </body>
 </html>

@@ -39,6 +39,9 @@ public class Book {
     @Column
     private BigDecimal price;
 
+    @Column
+    private String publisherPhone;
+
     public Long getId() {
         return id;
     }
@@ -101,5 +104,13 @@ public class Book {
 
     public void setPublisher(String publisher) {
         this.publisher = publisher;
+    }
+
+    public String getPublisherPhone() {
+        return publisherPhone;
+    }
+
+    public void setPublisherPhone(String publisherPhone) {
+        this.publisherPhone = publisherPhone;
     }
 }

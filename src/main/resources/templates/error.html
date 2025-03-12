@@ -8,6 +8,8 @@
     <title>ERROR</title>
 </head>
 <body>
-<a th:href="/">Voltar</a>
-</body>
+<h1>Erro</h1>
+<h1 th:text="${errorMessage}"></h1>
+<a th:href="@{/books/list}">Voltar</a>
+</body>+
 </html>
