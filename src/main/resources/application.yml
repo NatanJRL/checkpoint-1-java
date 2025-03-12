@@ -28,9 +28,9 @@ spring:
   h2:
     console:
       enabled: true
-      path: /h2-console  # Caminho para acessar o console H2 no navegador
-    show-sql: true  # To show SQL queries in the console (optional)
-    # open-in-view: false  # Best practice to disable Open Session in View pattern
+      path: /h2-console 
+    show-sql: true
+
   devtools:
     restart:
       enabled: true
@@ -40,8 +40,8 @@ logging:
     br: DEBUG
     org:
       hibernate:
-        SQL: DEBUG         # Ativa o log das SQL queries
+        SQL: DEBUG
         type:
           descriptor:
             sql:
-              BasicBinder: TRACE  # Mostra parâmetros das queries
+              BasicBinder: TRACE
